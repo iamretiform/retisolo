@@ -15,5 +15,25 @@
   <%= @location.longitude %>
 </p>
 
+<div class='row'>
+  <div class='col-lg-6'>
+  <h4>Nearby Tagged Locations</h4>
+  <ul>
+  <% for location in @location.nearbys(20) %>
+    <li><%= link_to location.address, location %> (<%= location.distance %> miles )</li>
+  <% end %>
+  </ul>
+
+    <h4>Address</h4>
+    <p><%= @location.address %></p>
+  </div>
+
+  <div class='col-lg-6'>
+  <%= render 'google_map', location: @location %>
+  </div>
+</div>
+
+
+
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

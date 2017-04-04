@@ -4,12 +4,18 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    if params[:search].present?
+      @locations = Location.near(params[:search], 50, order: 'distance' )
+      flash[:notice] = 'Searching near ' + params[:search].to_s + '...'
+    else
+      @locations = Location.all
+    end
   end
 
   # GET /locations/1
   # GET /locations/1.json
   def show
+    @location = Location.find(params[:id])
   end
 
   # GET /locations/new
