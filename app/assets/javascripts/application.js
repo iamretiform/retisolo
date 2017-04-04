@@ -15,3 +15,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+  navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+  function locationSuccess(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      latr.innerHTML = latitude;
+      longr.innerHTML = longitude;
+  }
+
+  function locationFail() {
+      alert("Oops, could not find you.");
+  }
+});

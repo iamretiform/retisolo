@@ -14,6 +14,11 @@
 <nav>
   <%= link_to 'Log Out', destroy_user_session_path %>
   <%= link_to 'All Locations', locations_path %>
+  <ul class="nav navbar-nav navbar-right">
+    <h4>Your location:</h4>
+    <li><h5><p id="latr"></p></h5></li>
+    <li><h5><p id="longr"></p></h5></li>
+  </ul>
 </nav>
     <%= yield %>
   </body>
