@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     if params[:search].present?
-      @locations = Location.near(params[:search], 50, order: 'distance' )
+      @locations = Location.near(params[:search], 50, order: 'distance')
       flash[:notice] = 'Searching near ' + params[:search].to_s + '...'
     else
       @locations = Location.all
@@ -24,8 +24,7 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /locations
   # POST /locations.json
@@ -68,13 +67,14 @@ class LocationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_location
-      @location = Location.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def location_params
-      params.require(:location).permit(:address, :latitude, :longitude)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_location
+    @location = Location.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def location_params
+    params.require(:location).permit(:address, :latitude, :longitude)
+  end
 end

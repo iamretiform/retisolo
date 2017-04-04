@@ -1,39 +1,44 @@
-<p id="notice"><%= notice %></p>
-
+<p id="notice">
+  <%= notice %>
+</p>
 <p>
   <strong>Address:</strong>
   <%= @location.address %>
 </p>
-
 <p>
   <strong>Latitude:</strong>
   <%= @location.latitude %>
 </p>
-
 <p>
   <strong>Longitude:</strong>
   <%= @location.longitude %>
 </p>
-
-<div class='row'>
-  <div class='col-lg-6'>
-  <h4>Nearby Tagged Locations</h4>
-  <ul>
-  <% for location in @location.nearbys(20) %>
-    <li><%= link_to location.address, location %> (<%= location.distance %> miles )</li>
-  <% end %>
-  </ul>
-
-    <h4>Address</h4>
-    <p><%= @location.address %></p>
-  </div>
-
-  <div class='col-lg-6'>
-  <%= render 'google_map', location: @location %>
-  </div>
-</div>
-
-
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<h4>Address</h4>
+<p>
+  <%= @location.address %>
+</p>
+<%= render 'google_map', location: @location %>
+  <table class="table table-sm table-hover">
+    <thead>
+      <h4>Nearby Tagged Locations</h4>
+      <tr>
+        <th>Address</th>
+        <th>Distance</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for location in @location.nearbys(20) %>
+      <tr>
+        <td>
+          
+            <%= link_to location.address, location %>
+        </td>
+        <td>(
+          <%= location.distance %> miles )
+            <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to 'Edit', edit_location_path(@location) %> |
+    <%= link_to 'Back', locations_path %>
