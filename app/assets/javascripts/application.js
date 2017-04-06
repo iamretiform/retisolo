@@ -18,10 +18,8 @@
 $(document).ready(function() {
   navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
   function locationSuccess(position) {
-      var user_current_latitude = position.coords.latitude;
-      var user_current_longitude = position.coords.longitude;
-      latr = user_current_latitude;
-      longr = user_current_longitude;
+      latr = position.coords.latitude;
+      longr = position.coords.longitude;
   }
 
   function locationFail() {

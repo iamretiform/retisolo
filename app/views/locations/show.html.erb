@@ -1,40 +1,81 @@
-<p id="notice">
+<p class="callout" id="notice">
   <%= notice %>
-</p>  
-<p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
 </p>
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
-<h4>Address</h4>
-<p>
-  <%= @location.address %>
-</p>
-<%= render 'google_map', location: @location %>
-  <table class="table table-sm table-hover">
-    <thead>
-      <h4>Nearby Tagged Locations</h4>
-      <tr>
-        <th>Address</th>
-        <th>Distance</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% for location in @location.nearbys(20) %>
-      <tr>
-        <td>
-          
-            <%= link_to location.address, location %>
-        </td>
-        <td>(
-          <%= location.distance %> miles )
-            <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <%= link_to 'Edit', edit_location_path(@location) %> |
-    <%= link_to 'Back', locations_path %>
+<ul class="accordian" data-accordian>
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Show Location Data</a>
+    <div class="accordion-content" data-tab-content>
+      <p><strong>Latitude:</strong>
+        <%= @location.latitude %>
+      </p>
+      <p><strong>Longitude:</strong>
+        <%= @location.longitude %>
+      </p>
+      <h4>Address</h4>
+      <p>
+        <%= @location.address %>
+      </p>
+    </div>
+    </li>
+    <li class="accordion-item" data-accordion-item>
+      <a href="#" class="accordion-title">My Geolocation</a>
+      <div class="accordion-content" data-tab-content>
+      <ul>
+        <li>Lat:
+          <div class="callout" id="latr">
+          </div>
+        </li>
+        <li>Long:
+          <div class="callout" id="longr">
+          </div>
+        </li>
+      </ul>
+      </div>
+      </li>
+      <li class="accordion-item" data-accordion-item>
+        <a href="#" class="accordion-title">Current Sounds Localized</a>
+        <div class="accordion-content" data-tab-content>
+      <%= @sounds %>
+      </div>
+      </li>
+      <li class="accordion-item" data-accordion-item>
+        <a href="#" class="accordion-title">New Sound Localization</a>
+        <div class="accordion-content" data-tab-content>
+        <%= render 'sounds/sound_form', location_id: @location.id %>
+        </div>
+        </li>
+        <li class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">Map</a>
+          <div class="accordion-content" data-tab-content>
+          <%= render 'google_map', location: @location %>
+          </div>
+          </li>
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">Nearby</a>
+            <div class="accordion-content" data-tab-content>
+            <table class="table table-sm table-hover">
+              <thead>
+                <h4>Locations</h4>
+                <tr>
+                  <th>Address</th>
+                  <th>Distance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for location in @location.nearbys(20) %>
+                  <tr>
+                    <td>
+                      <%= link_to location.address, location %>
+                    </td>
+                    <td>(
+                      <%= location.distance %> miles )
+                        <% end %>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+            </div>
+            </li>
+            </ul>
+            <%= link_to 'Edit', edit_location_path(@location) %> |
+              <%= link_to 'Back', locations_path %>
