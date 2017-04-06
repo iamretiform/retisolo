@@ -16,7 +16,27 @@
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
+    
+    <h4>Your location:</h4>
+    <li>
+
+    <div class="field" id="latr">
+      <%= f.label :user_current_latitude %>
+      <%= f.text_field :user_current_latitude, id: 'latr' %>
+    </div>
+    <li>
+
+    <div class="field" id="longr">
+      <%= f.label :user_current_longitude %>
+      <%= f.text_field :user_current_longitude, id: 'longr' %>
+    </div>
+
+
+
+
   <% end -%>
+
+
 
   <div class="actions">
     <%= f.submit "Log in" %>
