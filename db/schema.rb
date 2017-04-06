@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404020504) do
+ActiveRecord::Schema.define(version: 20170405235427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,28 @@ ActiveRecord::Schema.define(version: 20170404020504) do
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "locus", id: false, force: :cascade do |t|
+    t.integer "location_id", null: false
+    t.integer "user_id",     null: false
+    t.index ["location_id"], name: "index_locus_on_location_id", using: :btree
+    t.index ["user_id"], name: "picker_id", using: :btree
+    t.index ["user_id"], name: "tagger_id", using: :btree
+  end
+
+  create_table "solo", id: false, force: :cascade do |t|
+    t.integer "sound_id",    null: false
+    t.integer "location_id", null: false
+    t.index ["location_id"], name: "index_solo_on_location_id", using: :btree
+    t.index ["sound_id"], name: "index_solo_on_sound_id", using: :btree
+  end
+
+  create_table "sounds", force: :cascade do |t|
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["location_id"], name: "index_sounds_on_location_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +62,5 @@ ActiveRecord::Schema.define(version: 20170404020504) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "sounds", "locations"
 end

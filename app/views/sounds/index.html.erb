@@ -1,0 +1,21 @@
+<h1>Listing sounds</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sounds.each do |sound| %>
+  <tr>
+    <td><%= link_to 'Show', [sound.location, sound] %></td>
+    <td><%= link_to 'Edit', edit_location_sound_path(sound.location, sound) %></td>
+    <td><%= link_to 'Destroy', [sound.location, sound], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sound', new_location_sound_path(params[:location_id]) %>

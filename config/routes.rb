@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :locations
+  resources :locations do
+    resources :sounds
+  end
   root to: 'home#index'
   devise_for :users
 
