@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  resources :locations do
-    resources :sounds
-  end
-  root to: 'home#index'
   devise_for :users
-  
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'home#index'
+  resources :locations, param: :slug
+  resources :sounds
+  mount ActionCable.server => '/cable'
 end

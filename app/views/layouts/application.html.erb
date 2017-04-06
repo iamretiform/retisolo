@@ -1,84 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <title>Retisolo</title>
-  <%= csrf_meta_tags %>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-      <%= javascript_include_tag 'application' %>
-</head>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-<body>
-  <!--
-  User Profile Sidebar by @keenthemes
-  A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-  Licensed under MIT
-  -->
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-  <div class="container">
-      <div class="row profile">
-      <div class="col-md-3">
-        <div class="profile-sidebar">
-          <!-- END SIDEBAR USERPIC -->
-          <!-- SIDEBAR USER TITLE -->
-          <div class="profile-usertitle">
-            <div class="profile-usertitle-name">
-              <%= current_user.email %>
-            </div>
-              <i class="glyphicon glyphicon-screenshot"></i>
-               <ul class="nav navbar-nav navbar-collapse">
-                 <h4>Your location:</h4>
-                   <h5><p id="latr"></p></h5></li>
-                 <li>
-                   <h5><p id="longr"></p></h5></li>
-          </div>
-          <br>
-          <!-- END SIDEBAR USER TITLE -->
-          <!-- SIDEBAR BUTTONS -->
-          <div class="profile-userbuttons">
-            <button type="button" class="btn btn-danger btn-sm"><%= link_to 'Log Out', destroy_user_session_path, method: 'delete' %> </button>
-            <button type="button" class="btn btn-success btn-sm"><%= link_to 'New Location', new_location_path %></button>
-          </div>
-          <!-- END SIDEBAR BUTTONS -->
-          <!-- SIDEBAR MENU -->
-          <div class="profile-usermenu">
-            <ul class="nav">
-              <li class="active">
-                <a href="#">
-                <i class="glyphicon glyphicon-home"></i>
-                Overview </a>
-              </li>
-              <li>
-                <a href="users/edit">
-                <i class="glyphicon glyphicon-user"></i>
-                <%= link_to 'Edit User', edit_user_registration_path %> </a>
-              </li>
-              <li>
-                <a href="#" target="_blank">
-                <i class="glyphicon glyphicon-ok"></i>
-                tagged_locations </a>
-              </li>
+  <body>
 
-            </ul>
-          </div>
-          <!-- END MENU -->
-        </div>
-      </div>
-      <div class="col-md-9">
-              <div class="profile-content">
-              <%= yield %>
-              </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <br>
-</body>
+    <%= yield %>
 
+  </body>
 </html>
-

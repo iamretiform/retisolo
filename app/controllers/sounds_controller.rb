@@ -21,13 +21,15 @@ class SoundsController < ApplicationController
   end
 
   # POST locations/1/sounds
-  def create
-    @sound = @location.sounds.build(sound_params)
 
-    if @sound.save
-      redirect_to([@sound.location, @sound], notice: 'Sound was successfully created.')
+  def create
+    sound = Sound.new(sound_params)
+    sound.user = current_user
+
+    if sound.save
+      redirect_to(location_path, notice: 'Sound was successfully created.')
     else
-      render action: 'new'
+      redirect_to(locations_path, notice: 'Something went wrong when we tried to save your sound. :(')
     end
   end
 
@@ -59,6 +61,6 @@ class SoundsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sound_params
-      params.fetch(:sound, {})
+      params.require(:sound).permit(:artist_name, :title, :location_id, :user_id)
     end
 end

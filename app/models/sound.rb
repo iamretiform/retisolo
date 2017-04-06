@@ -1,4 +1,4 @@
 class Sound < ApplicationRecord
-  has_many :solos
-  has_many :locations, through: :solos
+  belongs_to :location
+  belongs_to :user
 end

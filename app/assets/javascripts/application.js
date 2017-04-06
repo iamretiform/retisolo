@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
 $(document).ready(function() {
@@ -20,11 +20,12 @@ $(document).ready(function() {
   function locationSuccess(position) {
       var user_current_latitude = position.coords.latitude;
       var user_current_longitude = position.coords.longitude;
-      latr.innerHTML = user_current_latitude;
-      longr.innerHTML = user_current_longitude;
+      latr = user_current_latitude;
+      longr = user_current_longitude;
   }
 
   function locationFail() {
       alert("Oops, could not find you.");
   }
 });
+$(function(){ $(document).foundation(); });

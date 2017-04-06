@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Locations</h1>
+<%= link_to 'New Location', new_location_path %>
 <%= form_tag locations_path, :method => :get do %>
 <p>
   <%= text_field_tag :search, params[:search] %> 
@@ -34,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Location', new_location_path %>
+
