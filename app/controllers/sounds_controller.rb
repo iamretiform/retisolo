@@ -1,5 +1,4 @@
 class SoundsController < ApplicationController
-  before_action :set_sounds
   before_action :set_sound, only: [:show, :edit, :update, :destroy]
 
   # GET locations/1/sounds
@@ -25,9 +24,12 @@ class SoundsController < ApplicationController
   def create
     sound = Sound.new(sound_params)
     sound.user = current_user
-
+    sound.location = 
     if sound.save
-      redirect_to(location_path, notice: 'Sound was successfully created.')
+      ActionCable.server.broadcast 'sounds',
+          sound: sound.artist_name + sound.title,
+          user: sound.user.email
+        head :ok
     else
       redirect_to(locations_path, notice: 'Something went wrong when we tried to save your sound. :(')
     end
@@ -51,12 +53,10 @@ class SoundsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_sounds
-      @location = Location.find(params[:location_id])
-    end
+
 
     def set_sound
-      @sound = @location.sounds.find(params[:id])
+      @sound = @location.sounds.find(params[:location_id])
     end
 
     # Only allow a trusted parameter "white list" through.

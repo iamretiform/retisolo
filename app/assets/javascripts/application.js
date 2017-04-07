@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require_tree .
+//= require_tree ./channels
 $(document).ready(function() {
   navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
   function locationSuccess(position) {

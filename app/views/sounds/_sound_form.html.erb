@@ -1,9 +1,9 @@
 <%= form_for @sound, remote: true, authenticity_token: true do |f| %>
-  <%= f.label :artist_name %>:
-  <%= f.text_field :artist_name, class: "form-control", data: {textfield: "artist_name"} %>
-  <%= f.label :title %>:
-  <%= f.text_area :title, class: "form-control", data: {textarea: "title"} %>
-  <%= f.hidden_field :location_id, value: :location_id %>
-  <%= f.hidden_field :user_id, value: :user_id %>
-  <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "sound"} %>
+  <%= f.label :artist_name %>
+  <%= f.text_field :artist_name, class: "form-control", placeholder: "Who created this sound? ex. Drake, The xx, Jimi Hendrix, etc.", data: {textfield: "artist_name" } %>
+  <%= f.label :title %>
+  <%= f.text_area :title, class: "form-control", placeholder: "What's the sound/track title? ex. 6 man, Night + Day, All Along the Watchtower, etc.", data: {textarea: "title"} %>
+  <%= f.hidden_field :location_id, value: @location.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "send", class: "btn btn-primary", data: {send: "sound"} %>
 <% end %>

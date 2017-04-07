@@ -16,11 +16,6 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find_by(params[:id])
     @sound = Sound.new
-    if @location.sounds.any?
-      @sounds = @location.sounds
-    else
-      flash[:notice] = "This location has not had any sounds added to it."
-    end
   end
 
   # GET /locations/new
