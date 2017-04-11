@@ -14,8 +14,9 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
 
   def show
-    @location = Location.find_by(params[:id])
+    @location = Location.find_by(params[:location_params])
     @sound = Sound.new
+    @sounds = Sound.all 
   end
 
   # GET /locations/new

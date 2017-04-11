@@ -60,9 +60,9 @@ $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
-$white: #fefefe;
-$body-background: $white;
-$body-font-color: $black;
+$white: #FBFFFE;
+$body-background: $black;
+$body-font-color: $white;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -272,7 +272,7 @@ $buttongroup-radius-on-each: true;
 // 13. Callout
 // -----------
 
-$callout-background: $white;
+$callout-background: $light-gray;
 $callout-background-fade: 85%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
@@ -540,8 +540,8 @@ $switch-paddle-transition: all 0.25s ease-out;
 // 32. Table
 // ---------
 
-$table-background: $white;
-$table-color-scale: 5%;
+$table-background: $black;
+$table-color-scale: 25%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;

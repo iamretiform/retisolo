@@ -1,5 +1,13 @@
-<%= @sound.artist_name %> <%= @sound.title %> 
+<% if !@sounds.blank? %>
+  <% for sound in @sounds %>
+  <%= sound.artist_name %><p>-</p><%= sound.title %> 
+    <%= link_to 'Edit', edit_sound_path(params[:id]) %> |
+<%= link_to 'Delete', sound_path(params[:id]), method: 'delete' %>
+  <% end %>
+<% else %>
+ <% notice[:danger] = "This Location has no sounds...." %>
+<% end %>
 
 
-<%= link_to 'Edit', edit_sound_path(params[:slug]) %> |
-<%= link_to 'Delete', sound_path(params[:slug]), method: 'delete' %>
+
+

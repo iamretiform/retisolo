@@ -11,20 +11,15 @@
       <%= @location.address %>
     </p>
     Lat:
-    <div class="callout" id="latr">
-    </div>
+    <p id="latr">
+    </p>
     Long:
-    <div class="callout" id="longr">
-    </div>
+    <p id="longr">
+    </p >
     <div class="panel panel-default">
-      <% if @location.sounds %>
         <div class="panel-body" id="sounds">
           <%= render template: 'sounds/show', collection: @location.sounds %>
         </div>
-      <%else%>
-        <div class="panel-body hidden" id="sounds">
-        </div>
-      <%end%>
     </div>
       <%= render 'sounds/sound_form', locals: { location_id: @location.id } %>
         <%= render 'google_map', location: @location %>
@@ -40,7 +35,7 @@
               <% for location in @location.nearbys(20) %>
                 <tr>
                   <td>
-                    <%= link_to location.address, location %>
+                    <%= link_to location.address, location_path(location.id) %>
                   </td>
                   <td>(
                     <%= location.distance %> miles )

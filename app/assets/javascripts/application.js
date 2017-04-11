@@ -16,14 +16,17 @@
 //= require turbolinks
 //= require_tree ./channels
 $(document).ready(function() {
-  navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
-  function locationSuccess(position) {
-      latr = position.coords.latitude;
-      longr = position.coords.longitude;
-  }
+  $(function() {
+    $(document).foundation();
+    navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
 
-  function locationFail() {
+    function locationSuccess(position) {
+      latr.innerHTML = position.coords.latitude;
+      longr.innerHTML = position.coords.longitude;
+    }
+
+    function locationFail() {
       alert("Oops, could not find you.");
-  }
+    }
+  });
 });
-$(function(){ $(document).foundation(); });

@@ -5,5 +5,5 @@
   <%= f.text_area :title, class: "form-control", placeholder: "What's the sound/track title? ex. 6 man, Night + Day, All Along the Watchtower, etc.", data: {textarea: "title"} %>
   <%= f.hidden_field :location_id, value: @location.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "send", class: "btn btn-primary", data: {send: "sound"} %>
+  <%= f.submit "send", class: "btn btn-primary", data: {send: "sound"}, method: 'post' %>
 <% end %>

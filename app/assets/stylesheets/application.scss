@@ -1,3 +1,13 @@
 /*= require foundation
 @import "foundation_and_overrides";
 /* Add imports of custom sass/scss files here */
+HTML {
+  background-repeat:no-repeat;
+  background-image: linear-gradient(to right, black 0%, white 100%), url('background.jpg');
+  background-size: 100% 100%;
+  background-blend-mode: color-dodge;
+}
+
+body {
+  opacity: 0.8;
+}

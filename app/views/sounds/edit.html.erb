@@ -3,4 +3,4 @@
 <%= render 'sound_form' %>
 
 <%= link_to 'Show', [@sound.location, @sound] %> |
-<%= link_to 'Back', location_sounds_path(@sound.location) %>
+<%= link_to 'Back', locations_path(params[:slug]) %>
