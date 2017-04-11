@@ -2,12 +2,20 @@
 @import "foundation_and_overrides";
 /* Add imports of custom sass/scss files here */
 html {
+  background: linear-gradient(black 20%, white 100%), url('background.jpg');
   background-repeat:no-repeat;
-  background-image: linear-gradient(to right, black 0%, white 100%), url('background.jpg');
-  background-size: fill;
-  background-blend-mode: color-dodge;
+  background-size: auto;
+  background-blend-mode: screen;
+  background-attachment: fixed;
+  background-position: center;
+  z-index: -5;
 }
 
 body {
+  z-index: 1;
+  font-family: 'Raleway', sans-serif; 
+  margin-top: 10%;
+  background-color: #301814;
+  background-blend-mode: screen;
   opacity: 0.8;
 }
