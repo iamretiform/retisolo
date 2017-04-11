@@ -10,6 +10,7 @@ class SoundsController < ApplicationController
   def show
     @sounds = @location.sounds
     @sound = @location.sound
+    flash[:danger] = "This Location has no sounds...."
   end
 
   # GET locations/1/sounds/new

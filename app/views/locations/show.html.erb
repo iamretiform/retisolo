@@ -1,14 +1,14 @@
 <p class="callout" id="notice">
   <%= notice %>
     <p><strong>Latitude:</strong>
-      <%= @location.latitude %>
+      <%= :latitude %>
     </p>
     <p><strong>Longitude:</strong>
-      <%= @location.longitude %>
+      <%= :longitude %>
     </p>
     <h4>Address</h4>
     <p>
-      <%= @location.address %>
+      <%= :address %>
     </p>
     Lat:
     <p id="latr">
@@ -18,10 +18,10 @@
     </p >
     <div class="panel panel-default">
         <div class="panel-body" id="sounds">
-          <%= render template: 'sounds/show', collection: @location.sounds %>
+          <%= render template: 'sounds/show', collection: @sounds %>
         </div>
     </div>
-      <%= render 'sounds/sound_form', locals: { location_id: @location.id } %>
+      <%= render 'sounds/sound_form', locals: { location_id: :id } %>
         <%= render 'google_map', location: @location %>
           <table class="table table-sm table-hover">
             <thead>

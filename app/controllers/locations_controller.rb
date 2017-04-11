@@ -14,9 +14,13 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
 
   def show
-    @location = Location.find_by(params[:location_params])
-    @sound = Sound.new
-    @sounds = Sound.all 
+    if Location.all.count == 0
+      @location = Location.find_by(slug: params[:slug])
+      @sound = Sound.new
+      @sounds = Sound.all       
+    else
+      notice[:danger] = "No Locations"
+    end
   end
 
   # GET /locations/new

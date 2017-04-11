@@ -5,7 +5,7 @@
 <%= link_to 'Delete', sound_path(params[:id]), method: 'delete' %>
   <% end %>
 <% else %>
- <% notice[:danger] = "This Location has no sounds...." %>
+  <%= flash[:danger] %>
 <% end %>
 
 
